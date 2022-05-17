@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Checkpoints : MonoBehaviour
 {
+    public UnityEvent event1;
+
     private void OnTriggerEnter(Collider o)
     {
         if (o.CompareTag("Player"))
-        {          
-            PlayerPrefs.SetFloat("position", o.transform.position.z);
-            PlayerPrefs.Save();
+        {
+            event1?.Invoke();
         }
     }
 }
